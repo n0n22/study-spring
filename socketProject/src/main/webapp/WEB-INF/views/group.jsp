@@ -26,7 +26,7 @@
 	
 		// 웹소켓 접속 함수
 		function connect() {	
-			var uri = 'ws://localhost:8777/ws/sc';
+			var uri = 'ws://localhost:8777/ws/gp';
 			socket = new WebSocket(uri); // 전화기(통신기 역할)
 			
 			

@@ -11,6 +11,10 @@ public class WebSocketController {
 			return "basic";
 		}
 	
+		@RequestMapping("/group")
+		public String group() {
+			return "group";
+		}
 	
 	
 	

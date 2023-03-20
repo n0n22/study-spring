@@ -21,7 +21,7 @@ public class WebSocketBasicServer extends TextWebSocketHandler {   // -> 상속 
 
 	/*
 	 * 접속 시 실행되는 메소드 (특정 상황에 실행되는 코드) => 콜백
-	 * - session
+	 * - session : 접속한 사용자의 웹 소켓 정보 (HttpSession이 아님!!) - 들어왔다만 알 수 있음
 	 * 
 	 */
 	@Override
@@ -33,17 +33,32 @@ public class WebSocketBasicServer extends TextWebSocketHandler {   // -> 상속 
 	/*
 	 * 메시지 수신 시 호출될 메소드
 	 * 
+	 * - session : 접속한 사용자(전송한 사람)의 웹 소켓 정보 (HttpSession이 아님!!)
+	 * - message : 사용자가 전송한 메시지 정보
+	 * 				- payload : 실제 보낸 내용
+	 * 				- byteCount : 보낸 메시지 크기 (Byte)
+	 * 				- last : 메시지 종료 여부 (true이면 마지막 메시지)
+	 * 
 	 */
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		System.out.println("session : " + session);
+		System.out.println("message : " + message);
 	}
+	
+	
 
 	/*
 	 * 접속 종료 시 호출되는 메소드 => 콜백
+	 * - session : 사용자의 웹 소켓 정보 (HttpSession이 아님!!)
+	 * - status : 접속이 종료된 원인과 관련된 정보
 	 * 
 	 */
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		System.out.println("접속 종료");
+		System.out.println("session : " + session);
+		System.out.println("status : " + status);
 	}
 	
 	

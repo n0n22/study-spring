@@ -28,12 +28,19 @@
 	
 	<!-- WebSocket을 위한 빈등록 (schema먼저 추가) -->
 	<beans:bean id="basicServer" class="com.kh.ws.WebSocketBasicServer"></beans:bean>
+	<beans:bean id="groupServer" class="com.kh.ws.WebSocketGroupServer"></beans:bean>
+	
 	
 	<!-- 접속주소는 ws://localhost:8777/ws/basic -->
 	<websocket:handlers>
 		<websocket:mapping handler="basicServer" path="sc"></websocket:mapping>
+		<websocket:mapping handler="groupServer" path="gp"></websocket:mapping>
 	</websocket:handlers>
 	<!-- path의 경로로 들어오면 handler에 적힌 서버가 처리할 것 -->
+	
+	
+	
+	
 	
 	
 	
