@@ -20,6 +20,12 @@
 	<input type="text" id="chat-input">
 	<button onclick="send();">전송</button>
 	
+	<!-- 수신된 메시지가 출력될 영역 -->
+	<div class="message-wrap">
+		
+	
+	</div>
+	
 	<script>
 		
 		var socket;	
@@ -44,7 +50,15 @@
 			
 			socket.onmessage = function(e) {
 				console.log('메시지가 도착했습니다.');
+				
+				var div = $('<div></div>');
+				div.text(e.data);
+				$('.message-wrap').append(div);
+				
+				
 			}
+			
+
 			
 		}
 		
@@ -62,8 +76,6 @@
 			socket.send(text);
 			$('#chat-input').val('');
 		}
-
-		
 		
 	
 	
